@@ -1,0 +1,28 @@
+# Node modules (dependencies)
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Build files (Generated during deployment)
+build/
+dist/
+
+# Environment variables
+.env
+.env.local
+.env.development
+.env.production
+.env.test
+
+# Logs
+*.log
+logs/
+debug.log
+
+# Editor files
+.vscode/
+.idea/
+.DS_Store
+
+# Mac system files
+*.DS_Store
