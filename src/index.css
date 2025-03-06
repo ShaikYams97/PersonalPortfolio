@@ -7,6 +7,22 @@ body {
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .preloader-container {
   display: flex;
   justify-content: center;
@@ -1461,4 +1477,505 @@ body {
 .footer-section p:hover svg {
   color: #3b82f6;
   transform: scale(1.2);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ===== MOBILE RESPONSIVE ENHANCEMENTS ===== */
+
+/* Global Mobile Settings */
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+  
+  h1 {
+    font-size: 2.5rem !important;
+  }
+  
+  h2 {
+    font-size: 2rem !important;
+  }
+  
+  h3 {
+    font-size: 1.5rem !important;
+  }
+}
+
+/* Preloader Responsive Adjustment */
+@media (max-width: 768px) {
+  .welcome-text {
+    font-size: 1.8rem;
+  }
+  
+  .quote-container {
+    font-size: 1.2rem;
+  }
+  
+  .loading-screen {
+    max-width: 95%;
+  }
+}
+
+/* Navbar Mobile Adjustments */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 0.8rem 1rem;
+  }
+  
+  .logo {
+    font-size: 1.2rem;
+  }
+  
+  .menu-toggle {
+    z-index: 1001;
+  }
+  
+  .nav-links.active {
+    padding-top: 4rem;
+  }
+  
+  .nav-links a {
+    font-size: 1.2rem;
+    margin: 0.5rem 0;
+    padding: 0.7rem 0;
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* Home Section Responsive */
+@media (max-width: 768px) {
+  .home-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .home-content h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+  }
+  
+  .home-content p {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .home-content button {
+    padding: 0.7rem 1.5rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* About Section Responsive */
+@media (max-width: 768px) {
+  .about {
+    padding: 3rem 1rem;
+  }
+  
+  .about h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .subsection {
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .subsection h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .subsection p {
+    font-size: 1rem;
+  }
+  
+  .skills-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Skills Section Responsive */
+@media (max-width: 768px) {
+  .skills {
+    padding: 3rem 1rem;
+  }
+  
+  .skills h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .skills-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .skill-category {
+    padding: 1.2rem;
+  }
+  
+  .skill-icon {
+    font-size: 2rem;
+  }
+  
+  .skill-category h3 {
+    font-size: 1.3rem;
+  }
+  
+  .skill-category ul li {
+    font-size: 1rem;
+  }
+}
+
+/* Experience Section Responsive */
+@media (max-width: 768px) {
+  .experience {
+    padding: 3rem 1rem;
+  }
+  
+  .experience h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .experience-item {
+    padding: 1.5rem;
+  }
+  
+  .experience-item h3 {
+    font-size: 1.5rem;
+  }
+  
+  .experience-item p {
+    font-size: 1rem;
+  }
+  
+  .experience-item ul li {
+    font-size: 0.9rem;
+  }
+}
+
+/* Projects Section Responsive */
+@media (max-width: 768px) {
+  .projects-section {
+    padding: 3rem 1rem;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .project-card {
+    padding: 1.2rem;
+  }
+  
+  .project-title {
+    font-size: 1.3rem;
+  }
+  
+  .project-description {
+    font-size: 0.9rem;
+  }
+  
+  .skills-section h4,
+  .impact-section h4 {
+    font-size: 1.1rem;
+  }
+  
+  .skill-item {
+    padding: 0.3rem 0.8rem;
+    font-size: 0.8rem;
+  }
+  
+  .icon-background {
+    display: none; /* Hide background icons on mobile for better performance */
+  }
+}
+
+/* Contact Section Responsive */
+@media (max-width: 768px) {
+  .contact-section {
+    padding: 3rem 1rem;
+  }
+  
+  .contact-form {
+    padding: 1.2rem;
+    max-width: 90%;
+  }
+  
+  .form-group label {
+    font-size: 0.9rem;
+  }
+  
+  .form-group input,
+  .form-group textarea {
+    padding: 0.6rem;
+    font-size: 0.9rem;
+  }
+  
+  .send-button {
+    padding: 0.6rem 1.5rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* Footer Responsive Adjustments */
+@media (max-width: 768px) {
+  .footer {
+    padding: 1.5rem 1rem;
+  }
+  
+  .footer-section {
+    width: 90%;
+    padding: 0.8rem;
+    margin: 0.5rem auto;
+  }
+  
+  .footer-section h3 {
+    font-size: 1rem;
+  }
+  
+  .footer-section p {
+    font-size: 0.8rem;
+  }
+  
+  .social-icons {
+    gap: 0.5rem;
+  }
+  
+  .social-icons a {
+    width: 35px;
+    height: 35px;
+    font-size: 1rem;
+  }
+  
+  .floating-element {
+    display: none; /* Hide floating elements on mobile for better performance */
+  }
+}
+
+/* Additional Mobile-Specific Improvements */
+
+/* Fix for touch interactions */
+@media (max-width: 768px) {
+  /* Increase tap target sizes */
+  .nav-links a, 
+  .social-icons a,
+  .send-button,
+  .form-group input,
+  .form-group textarea {
+    touch-action: manipulation;
+  }
+  
+  /* Better spacing for tap targets */
+  .nav-links li,
+  .footer-section p,
+  .skills-list li,
+  .form-group {
+    margin-bottom: 1rem;
+  }
+  
+  /* Improve readability */
+  .subsection p,
+  .project-description,
+  .experience-item ul li,
+  .impact-section p {
+    line-height: 1.6;
+  }
+  
+  /* Add smooth scrolling for better UX */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Prevent content overflow */
+  img, video, iframe {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+/* Small Mobile Devices (under 480px) */
+@media (max-width: 480px) {
+  .home-content h1 {
+    font-size: 2rem;
+  }
+  
+  .home-content h2 {
+    font-size: 1.5rem;
+  }
+  
+  .welcome-text {
+    font-size: 1.5rem;
+  }
+  
+  .project-card {
+    padding: 1rem;
+  }
+  
+  .skills-list {
+    grid-template-columns: 1fr; /* Single column for very small screens */
+  }
+  
+  .nav-links.active {
+    width: 85%; /* Wider mobile menu for very small screens */
+  }
+  
+  .subsection {
+    padding: 1.2rem;
+  }
+}
+
+/* Fix for landscape orientation on mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+  .home,
+  .about,
+  .skills,
+  .experience,
+  .projects-section,
+  .contact-section {
+    padding: 2rem 1rem;
+    min-height: auto;
+  }
+  
+  .home-content {
+    padding: 1rem;
+  }
+  
+  .nav-links.active {
+    overflow-y: auto;
+    max-height: 100vh;
+  }
+}
+
+/* Better animation performance on mobile */
+@media (max-width: 768px) {
+  * {
+    will-change: auto; /* Optimize animations for mobile */
+  }
+  
+  .subsection,
+  .experience-item,
+  .skill-category,
+  .project-card {
+    animation: none; /* Disable some animations on mobile for better performance */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  @keyframes gradientAnimation {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+  
+  /* Optimize gradient animations for mobile */
+  .subsection:nth-child(n) {
+    animation-duration: 15s;
+  }
+}
+
+/* Fix for iOS Safari viewport issues */
+@supports (-webkit-touch-callout: none) {
+  .home,
+  .about,
+  .skills,
+  .experience,
+  .projects-section,
+  .contact-section {
+    min-height: -webkit-fill-available;
+  }
+}
+
+/* Scroll-to-top button for mobile */
+.scroll-top {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(59, 130, 246, 0.8);
+  color: white;
+  text-align: center;
+  line-height: 40px;
+  z-index: 1000;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.scroll-top:hover {
+  background: rgba(59, 130, 246, 1);
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 768px) {
+  .scroll-top {
+    display: block;
+  }
+}
+
+/* Mobile form enhancements */
+@media (max-width: 768px) {
+  /* Custom styling for form focus states on mobile */
+  .form-group input:focus,
+  .form-group textarea:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+  }
+  
+  /* Custom select styling for touch */
+  select {
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23ffffff%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.7rem top 50%;
+    background-size: 0.65rem auto;
+    padding-right: 2rem;
+  }
 }
