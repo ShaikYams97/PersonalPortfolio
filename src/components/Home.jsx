@@ -15,7 +15,7 @@ const Home = () => {
         <h1>Hi, I'm Shaik Yams</h1>
         <h2>
           <ReactTyped
-            strings={['DevOps Engineer', 'AWS Specialist', 'Cloud Enthusiast']}
+            strings={['DevOps Engineer', 'AWS Specialist', 'Cloud Enthusiast', 'Open-Source Enthusiast']}
             typeSpeed={50}
             backSpeed={50}
             loop
