@@ -742,27 +742,40 @@ body {
 
   .skills-grid {
     grid-template-columns: repeat(2, 1fr); /* Ensure 2 cards per row on mobile */
-    gap: 1rem; /* Reduce gap for mobile */
+    gap: 1rem; /* Add consistent gap between cards */
     max-width: 100%; /* Allow the grid to take full width */
-    justify-content: center; /* Center the grid horizontally */
-    padding: 0; /* Remove padding to ensure equal spacing */
+    padding: 0 1rem; /* Add padding to prevent edge overflow */
   }
 
   .skill-category {
     padding: 1rem; /* Reduce padding for mobile */
     width: 100%; /* Ensure each card takes full width of its column */
+    box-sizing: border-box; /* Include padding in width calculation */
+    background: rgba(255, 255, 255, 0.15); /* Slightly lighter background for better contrast */
+    border-radius: 15px; /* Maintain rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
   }
 
   .skill-icon {
     font-size: 2rem; /* Smaller icon size for mobile */
+    color: #1abc9c; /* Maintain icon color */
   }
 
   .skill-category h3 {
     font-size: 1.2rem; /* Smaller font size for mobile */
+    color: #ffffff; /* Ensure white text for contrast */
+    margin-bottom: 1rem; /* Add spacing below the heading */
+  }
+
+  .skill-category ul {
+    list-style: none; /* Remove default list styling */
+    padding-left: 0; /* Remove default padding */
   }
 
   .skill-category ul li {
     font-size: 1rem; /* Smaller font size for mobile */
+    color: #f0f0f0; /* Light gray text for better contrast */
+    margin-bottom: 0.5rem; /* Add spacing between list items */
   }
 }
 
@@ -773,7 +786,15 @@ body {
 
   .skills-grid {
     grid-template-columns: repeat(2, 1fr); /* Ensure 2 cards per row on very small screens */
-    gap: 0.5rem; /* Reduce gap further for very small screens */
+    gap: 0.75rem; /* Slightly reduce gap for very small screens */
+  }
+
+  .skill-category {
+    padding: 0.75rem; /* Reduce padding further for very small screens */
+  }
+
+  .skill-icon {
+    font-size: 1.8rem; /* Smaller icon size for very small screens */
   }
 
   .skill-category h3 {
