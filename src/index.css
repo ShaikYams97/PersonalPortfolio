@@ -743,11 +743,14 @@ body {
   .skills-grid {
     grid-template-columns: repeat(2, 1fr); /* Ensure 2 cards per row on mobile */
     gap: 1rem; /* Reduce gap for mobile */
-    max-width: 90%; /* Limit the grid width to ensure centering */
+    max-width: 100%; /* Allow the grid to take full width */
+    justify-content: center; /* Center the grid horizontally */
+    padding: 0; /* Remove padding to ensure equal spacing */
   }
 
   .skill-category {
     padding: 1rem; /* Reduce padding for mobile */
+    width: 100%; /* Ensure each card takes full width of its column */
   }
 
   .skill-icon {
@@ -770,7 +773,6 @@ body {
 
   .skills-grid {
     grid-template-columns: repeat(2, 1fr); /* Ensure 2 cards per row on very small screens */
-    max-width: 100%; /* Allow the grid to take full width */
     gap: 0.5rem; /* Reduce gap further for very small screens */
   }
 
@@ -782,7 +784,6 @@ body {
     font-size: 0.9rem; /* Even smaller font size for very small screens */
   }
 }
-
 
 
 
