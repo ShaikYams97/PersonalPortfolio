@@ -1,81 +1,152 @@
-import React, { useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import emailjs from '@emailjs/browser';
-import toast, { Toaster } from 'react-hot-toast';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-
-const Contact = () => {
+const ContactForm = () => {
   const form = useRef();
+  const [loading, setLoading] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  });
 
-  const sendEmail = (e) => {
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = (e) => {
     e.preventDefault();
-
-    emailjs
-    .sendForm(
-      'service_k85n6kh', // Replace with your EmailJS Service ID
-      'template_wget62i', // Replace with your EmailJS Template ID
-      form.current,
-      'zwrgWe1NNWU4o1hiQ' // Replace with your EmailJS User ID
-    ) 
-      .then(
-        (result) => {
-          console.log(result.text);
-          toast.success('Message sent successfully!', {
-            position: 'top-center',
-            duration: 3000,
-            style: {
-              background: '#28a745',
-              color: '#fff',
-              padding: '1rem',
-              borderRadius: '10px',
-              boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)',
-            },
-          });
-          form.current.reset(); // Reset the form after sending
-        },
-        (error) => {
-          console.log(error.text);
-          toast.error('Failed to send the message. Please try again.', {
-            position: 'top-center',
-            duration: 3000,
-            style: {
-              background: '#dc3545',
-              color: '#fff',
-              padding: '1rem',
-              borderRadius: '10px',
-              boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)',
-            },
-          });
-        }
-      );
+    
+    // Form validation
+    if (!formData.name || !formData.email || !formData.message) {
+      toast.error('Please fill in all required fields');
+      return;
+    }
+    
+    setLoading(true);
+    
+    // Replace these with your actual EmailJS service ID, template ID, and public key
+    const serviceId = 'service_k85n6kh'; const templateId = 'template_wget62i'; const publicKey = 'Yzdg3Mr9jbkLavMsX';
+    
+    // Create template parameters - these names must match your EmailJS template variables
+    const templateParams = {
+      from_name: formData.name,
+      reply_to: formData.email,
+      subject: formData.subject,
+      message: formData.message
+    };
+    
+    // Use sendForm when you want to send the actual form
+    // Use send when you want to send custom parameters
+    emailjs.send(serviceId, templateId, templateParams, publicKey)
+      .then((result) => {
+        toast.success('Your message has been sent! We\'ll get back to you soon.');
+        console.log('EmailJS success:', result.text);
+        
+        // Reset form
+        setFormData({
+          name: '',
+          email: '',
+          subject: '',
+          message: ''
+        });
+      })
+      .catch((error) => {
+        toast.error('Failed to send message. Please try again later.');
+        console.error('EmailJS error:', error.text);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   };
 
   return (
-    <section id="contact" className="contact-section">
-      <h2 className="section-title">Contact Me</h2>
-      <form ref={form} onSubmit={sendEmail} className="contact-form">
-        <div className="form-group">
-          <label htmlFor="name">Name</label>
-          <input type="text" id="name" name="user_name" required />
-        </div>
-        <div className="form-group">
-          <label htmlFor="email">Email</label>
-          <input type="email" id="email" name="user_email" required />
-        </div>
-        <div className="form-group">
-          <label htmlFor="subject">Subject</label>
-          <input type="text" id="subject" name="subject" required />
-        </div>
-        <div className="form-group">
-          <label htmlFor="message">Message</label>
-          <textarea id="message" name="message" rows="5" required></textarea>
-        </div>
-        <button type="submit" className="send-button">
-          <span>Send Message</span>
-        </button>
-      </form>
-      <Toaster />
-    </section>
+    <div className="contact-section">
+      <ToastContainer position="top-right" autoClose={5000} hideProgressBar={false} />
+      
+      <div className="contact-container">
+        <h2 className="section-title">Get In Touch</h2>
+        <p className="section-subtitle">
+          Have a question or want to work together? Fill out the form below and I'll get back to you as soon as possible.
+        </p>
+        
+        <form ref={form} className="contact-form" onSubmit={handleSubmit}>
+          <div className="form-row">
+            <div className="form-group floating-label">
+              <input
+                type="text"
+                id="name"
+                name="name"
+                className="form-control"
+                placeholder=" "
+                value={formData.name}
+                onChange={handleChange}
+              />
+              <label htmlFor="name">Your Name</label>
+              <span className="focus-border"></span>
+              <i className="input-icon far fa-user"></i>
+            </div>
+            
+            <div className="form-group floating-label">
+              <input
+                type="email"
+                id="email"
+                name="email"
+                className="form-control"
+                placeholder=" "
+                value={formData.email}
+                onChange={handleChange}
+              />
+              <label htmlFor="email">Email Address</label>
+              <span className="focus-border"></span>
+              <i className="input-icon far fa-envelope"></i>
+            </div>
+          </div>
+          
+          <div className="form-group floating-label">
+            <input
+              type="text"
+              id="subject"
+              name="subject"
+              className="form-control"
+              placeholder=" "
+              value={formData.subject}
+              onChange={handleChange}
+            />
+            <label htmlFor="subject">Subject</label>
+            <span className="focus-border"></span>
+            <i className="input-icon far fa-sticky-note"></i>
+          </div>
+          
+          <div className="form-group floating-label">
+            <textarea
+              id="message"
+              name="message"
+              className="form-control"
+              placeholder=" "
+              rows="5"
+              value={formData.message}
+              onChange={handleChange}
+            ></textarea>
+            <label htmlFor="message">Your Message</label>
+            <span className="focus-border"></span>
+            <i className="input-icon far fa-comment-dots"></i>
+          </div>
+          
+          <button type="submit" className="send-button" disabled={loading}>
+            <span>
+              {loading ? 'Sending...' : 'Send Message'}
+              <i className={`fas ${loading ? 'fa-spinner fa-spin' : 'fa-paper-plane'}`}></i>
+            </span>
+          </button>
+        </form>
+      </div>
+    </div>
   );
 };
 
-export default Contact;
+export default ContactForm;
