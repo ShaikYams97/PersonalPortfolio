@@ -1,10 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import {
-  FaPython, FaGitAlt,  FaJenkins, FaDocker, FaAws,
+  FaPython, FaGitAlt, FaJenkins, FaDocker, FaAws,
   FaLinux, FaChartLine, FaShieldAlt, FaTerminal, FaCogs
 } from 'react-icons/fa';
-import { SiTerraform, SiAnsible, SiKubernetes, } from 'react-icons/si';
+import { SiTerraform, SiAnsible, SiKubernetes } from 'react-icons/si';
 
 const Skills = () => {
   const skills = [

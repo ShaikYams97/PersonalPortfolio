@@ -651,6 +651,7 @@ body {
   flex-direction: column;
   justify-content: center;
   position: relative;
+  overflow: hidden; /* Ensure no horizontal overflow */
 }
 
 .skills::before {
@@ -685,6 +686,7 @@ body {
   gap: 2rem;
   max-width: 1200px;
   margin: 0 auto;
+  padding: 0 1rem; /* Add padding to prevent overflow */
 }
 
 .skill-category {
@@ -733,7 +735,7 @@ body {
   }
 
   .skills h2 {
-    font-size: 2rem; /* Smaller heading for mobile */
+    font-size: 2rem; /* Smaller font size for mobile */
   }
 
   .skills-grid {
@@ -750,17 +752,17 @@ body {
   }
 
   .skill-category h3 {
-    font-size: 1.2rem; /* Smaller heading for mobile */
+    font-size: 1.2rem; /* Smaller font size for mobile */
   }
 
   .skill-category ul li {
-    font-size: 1rem; /* Smaller text for mobile */
+    font-size: 1rem; /* Smaller font size for mobile */
   }
 }
 
 @media (max-width: 480px) {
   .skills h2 {
-    font-size: 1.8rem; /* Even smaller heading for very small screens */
+    font-size: 1.8rem; /* Even smaller font size for very small screens */
   }
 
   .skills-grid {
@@ -768,11 +770,11 @@ body {
   }
 
   .skill-category h3 {
-    font-size: 1rem; /* Even smaller heading for very small screens */
+    font-size: 1rem; /* Even smaller font size for very small screens */
   }
 
   .skill-category ul li {
-    font-size: 0.9rem; /* Even smaller text for very small screens */
+    font-size: 0.9rem; /* Even smaller font size for very small screens */
   }
 }
 
