@@ -733,7 +733,7 @@ body {
   }
 
   .skills h2 {
-    font-size: 2rem; /* Smaller font size for mobile */
+    font-size: 2rem; /* Smaller heading for mobile */
   }
 
   .skills-grid {
@@ -750,17 +750,17 @@ body {
   }
 
   .skill-category h3 {
-    font-size: 1.2rem; /* Smaller font size for mobile */
+    font-size: 1.2rem; /* Smaller heading for mobile */
   }
 
   .skill-category ul li {
-    font-size: 1rem; /* Smaller font size for mobile */
+    font-size: 1rem; /* Smaller text for mobile */
   }
 }
 
 @media (max-width: 480px) {
   .skills h2 {
-    font-size: 1.8rem; /* Even smaller font size for very small screens */
+    font-size: 1.8rem; /* Even smaller heading for very small screens */
   }
 
   .skills-grid {
@@ -768,11 +768,11 @@ body {
   }
 
   .skill-category h3 {
-    font-size: 1rem; /* Even smaller font size for very small screens */
+    font-size: 1rem; /* Even smaller heading for very small screens */
   }
 
   .skill-category ul li {
-    font-size: 0.9rem; /* Even smaller font size for very small screens */
+    font-size: 0.9rem; /* Even smaller text for very small screens */
   }
 }
 
