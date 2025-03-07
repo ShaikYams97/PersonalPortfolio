@@ -1,61 +1,71 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const Navbar = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
   useEffect(() => {
-    const menuToggle = document.querySelector('.menu-toggle');
-    const navLinks = document.querySelector('.nav-links');
-    const navbar = document.querySelector('.navbar');
-
-    const toggleMenu = () => {
-      navLinks.classList.toggle('active');
-      menuToggle.classList.toggle('active');
-    };
-
     const handleScroll = () => {
       if (window.scrollY > 50) {
-        navbar.classList.add('scrolled');
+        setIsScrolled(true);
       } else {
-        navbar.classList.remove('scrolled');
+        setIsScrolled(false);
       }
     };
-
-    if (menuToggle) {
-      menuToggle.addEventListener('click', toggleMenu);
-    }
-
+    
     window.addEventListener('scroll', handleScroll);
-
+    
     return () => {
-      if (menuToggle) {
-        menuToggle.removeEventListener('click', toggleMenu);
-      }
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
+  // Toggle mobile menu
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return (
-    <nav className="navbar">
+    <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
       <div className="logo">
-        Shaik Yams 
-        <img 
-          src="https://upload.wikimedia.org/wikipedia/en/4/41/Flag_of_India.svg" 
-          alt="India Flag" 
-          width="30" 
-          height="20" 
-          style={{ marginLeft: '5px', verticalAlign: 'middle' }} 
+        Shaik Yams
+        <img
+          src="https://upload.wikimedia.org/wikipedia/en/4/41/Flag_of_India.svg"
+          alt="India Flag"
+          width="30"
+          height="20"
+          style={{ marginLeft: '10px', verticalAlign: 'middle' }}
         />
       </div>
 
-      <button className="menu-toggle">☰</button>
+      {/* Hamburger Menu */}
+      <div className={`menu-toggle ${isMenuOpen ? 'active' : ''}`} onClick={toggleMenu}>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
 
-      <ul className="nav-links">
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/about">About Me</Link></li>
-        <li><Link to="/skills">Skills</Link></li>
-        <li><Link to="/experience">Experience</Link></li>
-        <li><Link to="/projects">Projects</Link></li>
-        <li><Link to="/contact">Contact</Link></li>
+      {/* Navigation Links */}
+      <ul className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
+        <li>
+          <Link to="/" onClick={() => setIsMenuOpen(false)}>Home</Link>
+        </li>
+        <li>
+          <Link to="/about" onClick={() => setIsMenuOpen(false)}>About Me</Link>
+        </li>
+        <li>
+          <Link to="/skills" onClick={() => setIsMenuOpen(false)}>Skills</Link>
+        </li>
+        <li>
+          <Link to="/experience" onClick={() => setIsMenuOpen(false)}>Experience</Link>
+        </li>
+        <li>
+          <Link to="/projects" onClick={() => setIsMenuOpen(false)}>Projects</Link>
+        </li>
+        <li className="nav-item-highlight">
+          <Link to="/contact" onClick={() => setIsMenuOpen(false)}>Contact</Link>
+        </li>
       </ul>
     </nav>
   );
