@@ -6,71 +6,414 @@ body {
   color: #333;
 }
 
-/* Preloader Container */
+/* DevOps & Cloud Infrastructure Preloader */
+:root {
+  --primary: #0078d7;
+  --secondary: #50e6ff;
+  --accent: #47d1ff;
+  --dark: #161b22;
+  --light: #f0f6fc;
+  --success: #4cc94c;
+  --warning: #f2c811;
+  --grid-color: rgba(79, 193, 255, 0.1);
+}
+
 .preloader-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--dark);
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  background: linear-gradient(135deg, #1a1a2e, #16213e);
-  color: #ffffff;
-  text-align: center;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+/* Infrastructure grid background */
+.preloader-container::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(var(--grid-color) 1px, transparent 1px),
+    radial-gradient(var(--grid-color) 1px, transparent 1px);
+  background-size: 30px 30px;
+  background-position: 0 0, 15px 15px;
+  animation: gridMove 60s linear infinite;
 }
 
 .loading-screen {
-  max-width: 80%;
+  position: relative;
+  text-align: center;
+  color: var(--light);
+  background: rgba(22, 27, 34, 0.8);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(79, 193, 255, 0.2);
+  border-radius: 8px;
+  box-shadow: 
+    0 0 30px rgba(0, 120, 215, 0.1),
+    0 0 60px rgba(0, 0, 0, 0.4);
+  padding: 3rem;
+  width: 600px;
+  max-width: 90%;
+  z-index: 2;
+  overflow: hidden;
+  animation: screenFadeIn 0.8s ease-out forwards;
+}
+
+/* Connection lines */
+.connection-lines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
 }
 
 .welcome-text {
-  font-size: 2.5rem;
-  font-weight: bold;
-  margin-bottom: 1rem;
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: relative;
+  opacity: 0;
+  animation: titleFadeIn 0.8s ease-out forwards 0.3s;
+}
+
+.welcome-text::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: lineExpand 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) forwards 0.8s;
 }
 
 .quote-container {
-  font-size: 1.5rem;
-  font-style: italic;
+  position: relative;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: rgba(240, 246, 252, 0.8);
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background: rgba(13, 17, 23, 0.6);
+  border-radius: 6px;
+  border-left: 3px solid var(--accent);
   opacity: 0;
-  animation: fadeIn 2s forwards;
+  transform: translateY(20px);
+  animation: fadeSlideUp 0.8s ease-out forwards 1s;
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
+/* Loading indicator */
+.loading-indicator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+  height: 40px;
+  opacity: 0;
+  animation: fadeIn 0.5s ease-out forwards 1.5s;
+}
+
+.loading-progress {
+  position: relative;
+  width: 70%;
+  height: 4px;
+  background: rgba(240, 246, 252, 0.1);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.loading-progress::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  animation: loadProgress 2.5s cubic-bezier(0.215, 0.610, 0.355, 1.000) forwards 0.5s;
+}
+
+/* DevOps Icon Container */
+.devops-icons {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.devops-icon {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0;
+  filter: drop-shadow(0 0 8px rgba(0, 120, 215, 0.5));
+  animation: iconFloat 4s ease-in-out infinite, iconFadeIn 0.8s ease-out forwards;
+}
+
+/* CI/CD Pipeline Animation */
+.pipeline {
+  position: absolute;
+  bottom: 15px;
+  left: 10%;
+  width: 80%;
+  height: 2px;
+  background: rgba(240, 246, 252, 0.1);
+  border-radius: 1px;
+}
+
+.pipeline-progress {
+  position: absolute;
+  width: 0;
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  border-radius: 1px;
+  animation: pipelineProgress 2.5s linear infinite;
+}
+
+.pipeline-dot {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--success);
+  opacity: 0;
+}
+
+.pipeline-stage {
+  position: absolute;
+  top: -20px;
+  transform: translateX(-50%);
+  font-size: 0.7rem;
+  color: rgba(240, 246, 252, 0.7);
+  opacity: 0;
+}
+
+/* Animations */
+@keyframes gridMove {
+  0% {
+    background-position: 0 0, 15px 15px;
   }
-  to {
+  100% {
+    background-position: 300px 300px, 315px 315px;
+  }
+}
+
+@keyframes screenFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
-/* Responsive Adjustments for Mobile */
+@keyframes titleFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes lineExpand {
+  0% {
+    transform: scaleX(0);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes fadeSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes loadProgress {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+@keyframes iconFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes iconFadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+}
+
+@keyframes pipelineProgress {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+@keyframes dotAppear {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0);
+  }
+  20%, 80% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0);
+  }
+}
+
+@keyframes stageAppear {
+  0% {
+    opacity: 0;
+  }
+  20%, 80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes data-flow {
+  0% {
+    stroke-dashoffset: 1000;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+}
+
+/* Floating data packets */
+.data-packet {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  filter: blur(1px);
+  animation: packetMove linear forwards;
+}
+
+@keyframes packetMove {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Responsive Adjustments */
 @media (max-width: 768px) {
-  .preloader-container {
-    padding: 0 1rem; /* Add padding to prevent text from touching the edges */
-  }
-
   .welcome-text {
-    font-size: 2rem; /* Smaller font size for mobile */
+    font-size: 2rem;
   }
-
+  
   .quote-container {
-    font-size: 1.2rem; /* Smaller font size for mobile */
+    font-size: 1rem;
+    padding: 1rem;
   }
-
+  
   .loading-screen {
-    max-width: 90%; /* Increase max-width for better readability */
+    padding: 2rem;
+  }
+  
+  .devops-icon {
+    width: 30px;
+    height: 30px;
   }
 }
 
 @media (max-width: 480px) {
   .welcome-text {
-    font-size: 1.8rem; /* Even smaller font size for very small screens */
+    font-size: 1.5rem;
   }
-
+  
+  .loading-screen {
+    padding: 1.5rem;
+  }
+  
   .quote-container {
-    font-size: 1rem; /* Even smaller font size for very small screens */
+    margin: 1rem 0;
+  }
+  
+  .devops-icon {
+    width: 24px;
+    height: 24px;
   }
 }
 
