@@ -1,0 +1,356 @@
+/* Skills.css with light colored cards - Fixed */
+:root {
+  --primary-color: #4a6cf7;
+  --text-dark: #333333;
+  --text-medium: #555555;
+  --text-light: #777777;
+  --card-1: #e6efff;
+  --card-2: #f0e7ff;
+  --card-3: #e7f5ff;
+  --card-4: #e6f6fe;
+  --card-5: #e0f7fa;
+  --card-6: #e3fafc;
+  --card-7: #e6fcf5;
+  --card-8: #edf2ff;
+  --card-9: #eef2ff;
+  --card-10: #eee7ff;
+  --card-11: #f3e8ff;
+  --card-12: #fae8ff;
+  --card-13: #e6f4ff;
+  --accent-1: #4a6cf7;
+  --accent-2: #7c3aed;
+  --accent-3: #2563eb;
+  --accent-4: #3b82f6;
+  --accent-5: #0284c7;
+  --accent-6: #0891b2;
+  --accent-7: #0d9488;
+  --accent-8: #6366f1;
+  --accent-9: #4f46e5;
+  --accent-10: #7e22ce;
+  --accent-11: #8b5cf6;
+  --accent-12: #a855f7;
+  --accent-13: #3b82f6;
+  --border-radius: 12px;
+  --box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+  --transition: all 0.3s ease;
+}
+
+.skills-section {
+  position: relative;
+  padding: 100px 0;
+  background-color: #ffffff;
+  overflow: hidden;
+}
+
+/* Section header styling */
+.section-header {
+  text-align: center;
+  margin-bottom: 60px;
+  position: relative;
+  z-index: 2;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 10px;
+  letter-spacing: -0.5px;
+}
+
+.section-subtitle {
+  font-size: 1.2rem;
+  color: var(--text-medium);
+  margin-top: 15px;
+  font-weight: 500;
+}
+
+.title-underline {
+  height: 4px;
+  background: linear-gradient(90deg, var(--accent-2), var(--accent-5));
+  border-radius: 2px;
+  margin: 0 auto;
+}
+
+/* Skills grid layout */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Skill card styling with light colors */
+.skill-card {
+  border-radius: var(--border-radius);
+  padding: 30px;
+  box-shadow: var(--box-shadow);
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  /* Fixed height to prevent overlap when hovering */
+  min-height: 240px;
+  /* Add margin to prevent overlap issues */
+  margin-bottom: 8px;
+  isolation: isolate; /* Creates stacking context */
+}
+
+/* Apply different colors to cards based on index */
+.skill-card:nth-child(1) { background-color: var(--card-1); border-top: 4px solid var(--accent-1); }
+.skill-card:nth-child(2) { background-color: var(--card-2); border-top: 4px solid var(--accent-2); }
+.skill-card:nth-child(3) { background-color: var(--card-3); border-top: 4px solid var(--accent-3); }
+.skill-card:nth-child(4) { background-color: var(--card-4); border-top: 4px solid var(--accent-4); }
+.skill-card:nth-child(5) { background-color: var(--card-5); border-top: 4px solid var(--accent-5); }
+.skill-card:nth-child(6) { background-color: var(--card-6); border-top: 4px solid var(--accent-6); }
+.skill-card:nth-child(7) { background-color: var(--card-7); border-top: 4px solid var(--accent-7); }
+.skill-card:nth-child(8) { background-color: var(--card-8); border-top: 4px solid var(--accent-8); }
+.skill-card:nth-child(9) { background-color: var(--card-9); border-top: 4px solid var(--accent-9); }
+.skill-card:nth-child(10) { background-color: var(--card-10); border-top: 4px solid var(--accent-10); }
+.skill-card:nth-child(11) { background-color: var(--card-11); border-top: 4px solid var(--accent-11); }
+.skill-card:nth-child(12) { background-color: var(--card-12); border-top: 4px solid var(--accent-12); }
+.skill-card:nth-child(13) { background-color: var(--card-13); border-top: 4px solid var(--accent-13); }
+
+.skill-icon-container {
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  transition: var(--transition);
+}
+
+/* Match icon container to card accent color */
+.skill-card:nth-child(1) .skill-icon-container { background-color: rgba(74, 108, 247, 0.1); }
+.skill-card:nth-child(2) .skill-icon-container { background-color: rgba(124, 58, 237, 0.1); }
+.skill-card:nth-child(3) .skill-icon-container { background-color: rgba(37, 99, 235, 0.1); }
+.skill-card:nth-child(4) .skill-icon-container { background-color: rgba(59, 130, 246, 0.1); }
+.skill-card:nth-child(5) .skill-icon-container { background-color: rgba(2, 132, 199, 0.1); }
+.skill-card:nth-child(6) .skill-icon-container { background-color: rgba(8, 145, 178, 0.1); }
+.skill-card:nth-child(7) .skill-icon-container { background-color: rgba(13, 148, 136, 0.1); }
+.skill-card:nth-child(8) .skill-icon-container { background-color: rgba(99, 102, 241, 0.1); }
+.skill-card:nth-child(9) .skill-icon-container { background-color: rgba(79, 70, 229, 0.1); }
+.skill-card:nth-child(10) .skill-icon-container { background-color: rgba(126, 34, 206, 0.1); }
+.skill-card:nth-child(11) .skill-icon-container { background-color: rgba(139, 92, 246, 0.1); }
+.skill-card:nth-child(12) .skill-icon-container { background-color: rgba(168, 85, 247, 0.1); }
+.skill-card:nth-child(13) .skill-icon-container { background-color: rgba(59, 130, 246, 0.1); }
+
+/* Match icon color to card accent color */
+.skill-card:nth-child(1) .skill-icon { color: var(--accent-1); }
+.skill-card:nth-child(2) .skill-icon { color: var(--accent-2); }
+.skill-card:nth-child(3) .skill-icon { color: var(--accent-3); }
+.skill-card:nth-child(4) .skill-icon { color: var(--accent-4); }
+.skill-card:nth-child(5) .skill-icon { color: var(--accent-5); }
+.skill-card:nth-child(6) .skill-icon { color: var(--accent-6); }
+.skill-card:nth-child(7) .skill-icon { color: var(--accent-7); }
+.skill-card:nth-child(8) .skill-icon { color: var(--accent-8); }
+.skill-card:nth-child(9) .skill-icon { color: var(--accent-9); }
+.skill-card:nth-child(10) .skill-icon { color: var(--accent-10); }
+.skill-card:nth-child(11) .skill-icon { color: var(--accent-11); }
+.skill-card:nth-child(12) .skill-icon { color: var(--accent-12); }
+.skill-card:nth-child(13) .skill-icon { color: var(--accent-13); }
+
+.skill-icon {
+  font-size: 26px;
+  transition: var(--transition);
+}
+
+.skill-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 15px;
+}
+
+.skill-items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex-grow: 1;
+}
+
+.skill-item {
+  position: relative;
+  padding-left: 5px; /* Reduced from 16px since we're removing the bullet */
+  margin-bottom: 10px;
+  color: var(--text-dark); /* Changed from text-light to text-dark for visibility */
+  font-size: 0.95rem;
+}
+
+/* Remove the bullet points completely */
+.skill-item::before {
+  content: none; /* Removed bullet point */
+}
+
+.skill-progress {
+  height: 3px;
+  border-radius: 1.5px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+/* Match progress bar to card accent color */
+.skill-card:nth-child(1) .skill-progress { background-color: var(--accent-1); }
+.skill-card:nth-child(2) .skill-progress { background-color: var(--accent-2); }
+.skill-card:nth-child(3) .skill-progress { background-color: var(--accent-3); }
+.skill-card:nth-child(4) .skill-progress { background-color: var(--accent-4); }
+.skill-card:nth-child(5) .skill-progress { background-color: var(--accent-5); }
+.skill-card:nth-child(6) .skill-progress { background-color: var(--accent-6); }
+.skill-card:nth-child(7) .skill-progress { background-color: var(--accent-7); }
+.skill-card:nth-child(8) .skill-progress { background-color: var(--accent-8); }
+.skill-card:nth-child(9) .skill-progress { background-color: var(--accent-9); }
+.skill-card:nth-child(10) .skill-progress { background-color: var(--accent-10); }
+.skill-card:nth-child(11) .skill-progress { background-color: var(--accent-11); }
+.skill-card:nth-child(12) .skill-progress { background-color: var(--accent-12); }
+.skill-card:nth-child(13) .skill-progress { background-color: var(--accent-13); }
+
+/* Background animations */
+.background-elements {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.floating-circle, .floating-square {
+  position: absolute;
+  opacity: 0.05;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.floating-circle {
+  background: linear-gradient(135deg, var(--accent-2), var(--accent-5));
+}
+
+.floating-square {
+  background: linear-gradient(45deg, var(--accent-3), var(--accent-11));
+  transform: rotate(45deg);
+}
+
+.circle-1 {
+  width: 300px;
+  height: 300px;
+  top: -150px;
+  left: -100px;
+  animation: float 15s infinite alternate ease-in-out;
+}
+
+.circle-2 {
+  width: 200px;
+  height: 200px;
+  bottom: 50px;
+  right: -50px;
+  animation: float 18s infinite alternate-reverse ease-in-out;
+}
+
+.circle-3 {
+  width: 150px;
+  height: 150px;
+  top: 35%;
+  left: 70%;
+  animation: float 20s infinite alternate ease-in-out;
+}
+
+.square-1 {
+  width: 100px;
+  height: 100px;
+  top: 20%;
+  left: 5%;
+  animation: rotate 25s infinite linear;
+}
+
+.square-2 {
+  width: 80px;
+  height: 80px;
+  bottom: 15%;
+  left: 30%;
+  animation: rotate 30s infinite linear reverse;
+}
+
+/* Animations */
+@keyframes float {
+  0% {
+    transform: translateY(0) translateX(0);
+  }
+  50% {
+    transform: translateY(30px) translateX(20px);
+  }
+  100% {
+    transform: translateY(-20px) translateX(-15px);
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Media queries for responsiveness */
+@media screen and (max-width: 992px) {
+  .skills-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .skills-section {
+    padding: 70px 0;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+  }
+  
+  .skills-grid {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .skill-card {
+    padding: 25px;
+  }
+}
+
+/* Hover effects - modified to prevent overlap issues */
+.skill-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+  z-index: 10; /* Ensures the hovered card appears above others */
+}
+
+.skill-card:hover .skill-icon-container {
+  transform: scale(1.05);
+}
+
+.skill-card:hover .skill-icon {
+  transform: scale(1.15);
+}
+
+/* Fix for in-view animations */
+.skill-item {
+  opacity: 1 !important;
+  transform: none !important;
+}

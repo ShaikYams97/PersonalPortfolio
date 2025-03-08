@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Navbar from './components/Navbar';
-import Home from './components/Home';
-import AboutMe from './components/AboutMe';
-import Skills from './components/Skills';
-import Experience from './components/Experience';
-import Projects from './components/Projects';
-import Footer from './components/Footer';
-import Contact from './components/Contact';
-import Preloader from './components/Preloader';
+import Navbar from './components/Navbar/Navbar';
+import Home from './components/Home/Home';
+import AboutMe from './components/Aboutme/AboutMe';
+import Skills from './components/Skills/Skills';
+import Experience from './components/Experience/Experience';
+import Projects from './components/Projects/Projects';
+import Footer from './components/Footer/Footer';
+import Contact from './components/Contact/Contact';
+import Preloader from './components/PreLoader/Preloader';
 import './App.css';
 
 function App() {

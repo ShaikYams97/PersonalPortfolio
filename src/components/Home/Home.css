@@ -1,0 +1,418 @@
+/* Home.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap');
+
+:root {
+  --primary-blue: #3949AB;
+  --secondary-blue: #5C6BC0;
+  --light-blue: #7986CB;
+  --highlight-blue: #303F9F;
+  --subtle-blue: #E8EAF6;
+  --text-primary: #1A237E; /* Darker blue for headings */
+  --text-secondary: #37474F; /* Slightly darker for better readability */
+  --background-light: #F5F7FA;
+  --background-dark: #303F9F;
+  --gradient-start: #3949AB;
+  --gradient-end: #1A237E;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  color: var(--text-primary);
+  background-color: var(--background-light);
+  overflow-x: hidden;
+}
+
+.home-container {
+  position: relative;
+  min-height: 100vh;
+  padding: 2rem;
+  overflow: hidden;
+}
+
+/* Background Animation */
+.background-animation {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  opacity: 0.15;
+  pointer-events: none;
+}
+
+.cloud-servers {
+  width: 100%;
+  height: 100%;
+}
+
+/* Hero Section - Centered */
+.hero-content-centered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 900px;
+  margin: 6rem auto 0;
+  padding-top: 2rem;
+  text-align: center;
+}
+
+.hero-text {
+  max-width: 750px;
+}
+
+h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: var(--text-primary);
+}
+
+.highlight {
+  color: #303F9F; /* Slightly darker blue for better contrast */
+  position: relative;
+  font-weight: 700;
+}
+
+.highlight::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: var(--primary-blue);
+  border-radius: 2px;
+}
+
+.typewriter {
+  font-size: 1.75rem;
+  margin-bottom: 2rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.typed-text {
+  color: #3949AB; /* Using primary blue for better visibility */
+  font-weight: 600;
+  font-family: 'Roboto Mono', monospace;
+}
+
+.bio {
+  font-size: 1.25rem;
+  line-height: 1.7;
+  color: #455A64; /* Slightly darker for better contrast on light background */
+  margin-bottom: 2.5rem;
+}
+
+.cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+  padding: 0.9rem 2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.primary-btn {
+  background-color: var(--primary-blue);
+  color: white; /* Ensuring this remains white for contrast on blue button */
+  border: none;
+}
+
+/* Tech Stack Section */
+.tech-stack {
+  max-width: 1000px;
+  margin: 7rem auto;
+  text-align: center;
+}
+
+.tech-stack h2 {
+  margin-bottom: 2.5rem;
+  font-size: 2.25rem;
+  color: var(--primary-blue);
+  position: relative;
+  display: inline-block;
+}
+
+.tech-stack h2::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 4px;
+  background-color: var(--secondary-blue);
+  border-radius: 2px;
+}
+
+.tech-icons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.tech-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5rem;
+  border-radius: 12px;
+  background-color: white;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.tech-icon svg {
+  margin-bottom: 0.5rem;
+  color: var(--primary-blue);
+}
+
+.tech-icon:nth-child(odd) svg {
+  color: var(--primary-blue);
+}
+
+.tech-icon:nth-child(even) svg {
+  color: var(--secondary-blue);
+}
+
+.tech-icon span {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #37474F; /* Darker for better readability on white cards */
+}
+
+/* Services Section */
+.services {
+  max-width: 1200px;
+  margin: 7rem auto;
+  text-align: center;
+}
+
+.services h2 {
+  margin-bottom: 3rem;
+  font-size: 2.25rem;
+  color: var(--primary-blue);
+  position: relative;
+  display: inline-block;
+}
+
+.services h2::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 4px;
+  background-color: var(--secondary-blue);
+  border-radius: 2px;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+
+.service-card {
+  background-color: white;
+  border-radius: 12px;
+  padding: 2.5rem 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  text-align: left;
+  transition: all 0.3s ease;
+  border-top: 4px solid transparent;
+}
+
+.service-card:hover {
+  border-top: 4px solid var(--primary-blue);
+}
+
+.service-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin-bottom: 1.5rem;
+  background-size: 65%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Using inline SVG in the CSS */
+.aws-icon {
+  background-color: #E8EAF6;
+  position: relative;
+}
+
+.aws-icon::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%233949AB'%3E%3Cpath d='M13.5 7.5c0 .828-.448 1.5-1 1.5s-1-.672-1-1.5S11.948 6 12.5 6s1 .672 1 1.5zm3 2c0 .828-.448 1.5-1 1.5s-1-.672-1-1.5.448-1.5 1-1.5 1 .672 1 1.5zm-9 0c0 .828-.448 1.5-1 1.5s-1-.672-1-1.5.448-1.5 1-1.5 1 .672 1 1.5zm10.604 7.5c-1.5 0-2.104-.5-3.104-1s-1.5-.5-3-.5-2 0-3 .5-1.604 1-3.104 1c-1.652 0-2.396-1.5-2.396-1.5s1.5-2 4.5-2 5.5 2 8.5 2c0 0-1.123 1.5-2.396 1.5z'/%3E%3C/svg%3E");
+  background-size: 65%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.cicd-icon {
+  background-color: #E8EAF6;
+  position: relative;
+}
+
+.cicd-icon::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%235C6BC0'%3E%3Cpath d='M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z'/%3E%3C/svg%3E");
+  background-size: 65%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.k8s-icon {
+  background-color: #E8EAF6;
+  position: relative;
+}
+
+.k8s-icon::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%233949AB'%3E%3Cpath d='M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z'/%3E%3C/svg%3E");
+  background-size: 65%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.iac-icon {
+  background-color: #E8EAF6;
+  position: relative;
+}
+
+.iac-icon::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%235C6BC0'%3E%3Cpath d='M3 3h18v2H3V3zm0 4h18v2H3V7zm0 4h18v2H3v-2zm0 4h18v2H3v-2z'/%3E%3C/svg%3E");
+  background-size: 65%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.service-card h3 {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  color: var(--primary-blue);
+}
+
+.service-card p {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #455A64; /* Better contrast on white background of service cards */
+}
+
+/* Animation for background elements */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2.5rem;
+  }
+  
+  .typewriter {
+    font-size: 1.5rem;
+  }
+  
+  .bio {
+    font-size: 1.1rem;
+  }
+  
+  .tech-icons {
+    gap: 1rem;
+  }
+  
+  .tech-icon {
+    padding: 1rem;
+  }
+  
+  .service-card {
+    padding: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-container {
+    padding: 1rem;
+  }
+  
+  h1 {
+    font-size: 2rem;
+  }
+  
+  .typewriter {
+    font-size: 1.2rem;
+    height: 2rem;
+  }
+  
+  .bio {
+    font-size: 1rem;
+  }
+  
+  .cta-buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}

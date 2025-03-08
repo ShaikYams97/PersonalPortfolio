@@ -8,9 +8,15 @@
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.2.0",
     "@testing-library/user-event": "^13.5.0",
+    "@tsparticles/all": "^3.8.1",
+    "@tsparticles/engine": "^3.8.1",
+    "@tsparticles/react": "^3.0.0",
+    "@tsparticles/slim": "^3.8.1",
     "emailjs-com": "^3.2.0",
     "framer-motion": "^12.4.7",
+    "gsap": "^3.12.7",
     "icons": "^1.0.0",
+    "lucide-react": "^0.479.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-hot-toast": "^2.5.2",
@@ -21,6 +27,7 @@
     "react-toastify": "^11.0.5",
     "react-type-animation": "^3.2.0",
     "react-typed": "^2.0.12",
+    "tsparticles": "^3.8.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
