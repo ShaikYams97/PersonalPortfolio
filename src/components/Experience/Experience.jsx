@@ -79,7 +79,7 @@ const Experience = () => {
           <h2>Professional Experience</h2>
           <div className="underline"></div>
           <h3>DevOps Engineer at ProCorp</h3>
-          <p className="duration">July 2022 - Present | Hyderabad, India</p>
+          <p className="duration">July 2023 - Present | Hyderabad, India</p>
         </div>
 
         <div className="experience-content">

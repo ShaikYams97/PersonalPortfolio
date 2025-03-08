@@ -1,11 +1,12 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import emailjs from '@emailjs/browser';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import './Contact.css'
+import './Contact.css';
 
-const ContactForm = () => {
+const Contact = () => {
   const form = useRef();
+  const contactSectionRef = useRef();
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
@@ -13,6 +14,167 @@ const ContactForm = () => {
     subject: '',
     message: ''
   });
+
+  useEffect(() => {
+    // Reference to the contact section
+    const contactSection = contactSectionRef.current;
+    if (!contactSection) return;
+    
+    // Create animation container
+    const animationContainer = document.createElement('div');
+    animationContainer.className = 'contact-animation';
+    contactSection.appendChild(animationContainer);
+    
+    // Create moon
+    createMoon(animationContainer);
+    
+    // Create lamps
+    createLamp(animationContainer, '15%', '10%', 1, 0);
+    createLamp(animationContainer, '85%', '15%', 0.9, -2);
+    createLamp(animationContainer, '75%', '85%', 0.8, -4);
+    createLamp(animationContainer, '5%', '80%', 0.7, -6);
+    
+    // Create stars
+    for (let i = 0; i < 40; i++) {
+      createStar(animationContainer);
+    }
+    
+    // Create sparkles
+    for (let i = 0; i < 30; i++) {
+      createSparkle(animationContainer);
+    }
+    
+    // Create initial rocket
+    createRocket(animationContainer);
+    
+    // Create a new rocket every 15 seconds
+    const rocketInterval = setInterval(() => {
+      createRocket(animationContainer);
+    }, 15000);
+    
+    // Cleanup function
+    return () => {
+      clearInterval(rocketInterval);
+      if (contactSection.contains(animationContainer)) {
+        contactSection.removeChild(animationContainer);
+      }
+    };
+  }, []);
+
+  // Function to create moon
+  const createMoon = (parent) => {
+    const moon = document.createElement('div');
+    moon.className = 'contact-moon';
+    parent.appendChild(moon);
+  };
+
+  // Function to create lamp
+  const createLamp = (parent, left, top, scale, delay) => {
+    const lamp = document.createElement('div');
+    lamp.className = 'contact-lamp';
+    lamp.style.left = left;
+    lamp.style.top = top;
+    lamp.style.transform = `scale(${scale})`;
+    lamp.style.animationDelay = `${delay}s`;
+    
+    // Create lamp chain
+    const chain = document.createElement('div');
+    chain.className = 'lamp-chain';
+    lamp.appendChild(chain);
+    
+    // Create lamp top
+    const lampTop = document.createElement('div');
+    lampTop.className = 'lamp-top';
+    lamp.appendChild(lampTop);
+    
+    // Create lamp body
+    const lampBody = document.createElement('div');
+    lampBody.className = 'lamp-body';
+    lamp.appendChild(lampBody);
+    
+    // Create lamp light
+    const lampLight = document.createElement('div');
+    lampLight.className = 'lamp-light';
+    lampBody.appendChild(lampLight);
+    
+    parent.appendChild(lamp);
+  };
+
+  // Function to create star
+  const createStar = (parent) => {
+    const star = document.createElement('div');
+    star.className = 'contact-star';
+    
+    // Randomize properties
+    const size = Math.random() * 3 + 1; // 1-4px
+    star.style.width = `${size}px`;
+    star.style.height = `${size}px`;
+    star.style.left = `${Math.random() * 100}%`;
+    star.style.top = `${Math.random() * 100}%`;
+    star.style.animationDuration = `${Math.random() * 4 + 3}s`;
+    star.style.animationDelay = `${Math.random() * 5}s`;
+    
+    parent.appendChild(star);
+  };
+
+  // Function to create sparkle
+  const createSparkle = (parent) => {
+    const sparkle = document.createElement('div');
+    sparkle.className = 'contact-sparkle';
+    
+    // Randomize properties
+    const size = Math.random() * 4 + 2; // 2-6px
+    sparkle.style.width = `${size}px`;
+    sparkle.style.height = `${size}px`;
+    sparkle.style.left = `${Math.random() * 100}%`;
+    sparkle.style.top = `${Math.random() * 100}%`;
+    sparkle.style.animationDuration = `${Math.random() * 3 + 2}s`;
+    sparkle.style.animationDelay = `${Math.random() * 5}s`;
+    
+    parent.appendChild(sparkle);
+  };
+
+  // Function to create rocket
+  const createRocket = (parent) => {
+    const rocket = document.createElement('div');
+    rocket.className = 'contact-rocket';
+    
+    // Random vertical position
+    rocket.style.top = `${Math.random() * 50 + 20}%`;
+    
+    // Create rocket body
+    const rocketBody = document.createElement('div');
+    rocketBody.className = 'rocket-body';
+    
+    // Create window
+    const rocketWindow = document.createElement('div');
+    rocketWindow.className = 'rocket-window';
+    rocketBody.appendChild(rocketWindow);
+    
+    // Create fins
+    const leftFin = document.createElement('div');
+    leftFin.className = 'rocket-fin left';
+    rocketBody.appendChild(leftFin);
+    
+    const rightFin = document.createElement('div');
+    rightFin.className = 'rocket-fin right';
+    rocketBody.appendChild(rightFin);
+    
+    // Create flame
+    const flame = document.createElement('div');
+    flame.className = 'rocket-flame';
+    rocketBody.appendChild(flame);
+    
+    rocket.appendChild(rocketBody);
+    parent.appendChild(rocket);
+    
+    // Remove rocket after animation completes
+    setTimeout(() => {
+      if (parent.contains(rocket)) {
+        parent.removeChild(rocket);
+      }
+    }, 15000);
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -31,7 +193,9 @@ const ContactForm = () => {
     setLoading(true);
     
     // Replace these with your actual EmailJS service ID, template ID, and public key
-    const serviceId = 'service_k85n6kh'; const templateId = 'template_wget62i'; const publicKey = 'Yzdg3Mr9jbkLavMsX';
+    const serviceId = 'service_k85n6kh'; 
+    const templateId = 'template_wget62i'; 
+    const publicKey = 'Yzdg3Mr9jbkLavMsX';
     
     // Create template parameters - these names must match your EmailJS template variables
     const templateParams = {
@@ -55,6 +219,23 @@ const ContactForm = () => {
           subject: '',
           message: ''
         });
+        
+        // Create celebration effect
+        const contactContainer = document.querySelector('.contact-container');
+        if (contactContainer) {
+          contactContainer.style.animation = 'success-pulse 1.5s';
+          setTimeout(() => {
+            contactContainer.style.animation = '';
+          }, 1500);
+          
+          // Create extra sparkles for celebration
+          const animationContainer = document.querySelector('.contact-animation');
+          if (animationContainer) {
+            for (let i = 0; i < 20; i++) {
+              createSparkle(animationContainer);
+            }
+          }
+        }
       })
       .catch((error) => {
         toast.error('Failed to send message. Please try again later.');
@@ -66,7 +247,7 @@ const ContactForm = () => {
   };
 
   return (
-    <div className="contact-section">
+    <div className="contact-section" ref={contactSectionRef}>
       <ToastContainer position="top-right" autoClose={5000} hideProgressBar={false} />
       
       <div className="contact-container">
@@ -150,4 +331,4 @@ const ContactForm = () => {
   );
 };
 
-export default ContactForm;
+export default Contact;
