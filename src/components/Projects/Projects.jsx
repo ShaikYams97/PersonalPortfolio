@@ -28,7 +28,7 @@ const Projects = () => {
       description: "Developed a CI/CD pipeline using GitHub Actions to automate the build, testing, and deployment of microservices written in Java, Python, and Go. Integrated ArgoCD for continuous deployment, ensuring seamless rollout of updates to an AWS EKS cluster.",
       skills: ["GitHub Actions", "ArgoCD", "AWS EKS", "ALB Ingress Controller", "Route 53", "CI/CD"],
       impact: "Improved deployment speed by 70%, enhanced release reliability, ensured seamless traffic routing with custom DNS, and optimized application performance across different microservices through automated pipelines.",
-      github: "https://github.com/yourusername/project1"
+      
     },
     {
       id: 2,
