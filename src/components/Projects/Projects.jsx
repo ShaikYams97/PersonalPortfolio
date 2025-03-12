@@ -28,7 +28,7 @@ const Projects = () => {
       description: "Developed a CI/CD pipeline using GitHub Actions to automate the build, testing, and deployment of microservices written in Java, Python, and Go. Integrated ArgoCD for continuous deployment, ensuring seamless rollout of updates to an AWS EKS cluster.",
       skills: ["GitHub Actions", "ArgoCD", "AWS EKS", "ALB Ingress Controller", "Route 53", "CI/CD"],
       impact: "Improved deployment speed by 70%, enhanced release reliability, ensured seamless traffic routing with custom DNS, and optimized application performance across different microservices through automated pipelines.",
-      
+      github: "https://github.com/ShaikYams97/ultimate-devops-project-demo.git"
     },
     {
       id: 2,
@@ -37,7 +37,7 @@ const Projects = () => {
       description: "Designed and implemented a robust CI/CD pipeline using GitHub Actions to automate the build, testing, and deployment of the Wanderlust travel booking platform. Containerized the application using Docker and orchestrated deployment on AWS using Kubernetes.",
       skills: ["GitHub Actions", "Docker", "Kubernetes", "AWS", "Prometheus", "Grafana", "CI/CD"],
       impact: "Enhanced deployment efficiency, reduced manual intervention, and improved application monitoring and security through automated workflows.",
-      github: "https://github.com/yourusername/project2"
+      github: "https://github.com/ShaikYams97/Wanderlust-Mega-Project.git"
     },
     {
       id: 3,
@@ -46,7 +46,7 @@ const Projects = () => {
       description: "Built a fully automated infrastructure on AWS using Terraform, provisioning VPC, subnets, EC2, RDS, and S3. Integrated CI/CD pipelines in GitHub Actions for seamless deployments.",
       skills: ["Terraform", "AWS (VPC, EC2, RDS, S3)", "GitHub Actions", "Automation"],
       impact: "Reduced manual provisioning time by 80% and ensured infrastructure consistency.",
-      github: "https://github.com/yourusername/project3"
+      github: ""
     },
     {
       id: 4,
@@ -55,7 +55,7 @@ const Projects = () => {
       description: "Designed and deployed a serverless application using AWS Lambda and API Gateway, with DynamoDB as the database backend. Created a real-world notification system demonstrating cost-effective scalability.",
       skills: ["AWS Lambda", "API Gateway", "DynamoDB", "CloudWatch", "IAM"],
       impact: "Delivered a highly available, scalable application with a 70% reduction in operational costs.",
-      github: "https://github.com/yourusername/project4"
+      github: ""
     },
     {
       id: 5,
@@ -64,7 +64,7 @@ const Projects = () => {
       description: "Configured CloudWatch and Prometheus for comprehensive monitoring and alerting across AWS services. Integrated Grafana dashboards and Slack notifications for real-time incident alerts.",
       skills: ["AWS CloudWatch", "Prometheus", "Grafana", "Slack API"],
       impact: "Enhanced reliability through proactive monitoring and reduced incident response time by 50%.",
-      github: "https://github.com/yourusername/project5"
+      github: ""
     }
   ];
 
