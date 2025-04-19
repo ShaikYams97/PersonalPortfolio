@@ -154,14 +154,14 @@ const Home = () => {
           </motion.div>
           
           <motion.p className="bio" variants={itemVariants}>
-            With 2 years of experience in DevOps and AWS, I help businesses scale their infrastructure efficiently.
+            With good technincal experience in DevOps and AWS, I help businesses scale their infrastructure efficiently.
             I specialize in automating CI/CD pipelines, optimizing cloud resources, and ensuring high availability
             and fault tolerance for modern applications.
           </motion.p>
           
           <motion.div className="cta-buttons" variants={itemVariants}>
             <motion.a
-              href="https://drive.google.com/file/d/1Huj58ehtcvsNyyUyOOvGg2pgENCFgLgo/view?usp=drive_link"
+              href="https://drive.google.com/drive/u/0/folders/1Mo184qs1cOfao2J-u4XK7_P9J_j6iWeK"
               className="btn primary-btn"
               whileHover={{ scale: 1.05, boxShadow: '0 0 20px rgba(63, 81, 181, 0.5)' }}
               whileTap={{ scale: 0.95 }}
