@@ -16,164 +16,118 @@ const Contact = () => {
   });
 
   useEffect(() => {
-    // Reference to the contact section
     const contactSection = contactSectionRef.current;
     if (!contactSection) return;
     
     // Create animation container
     const animationContainer = document.createElement('div');
-    animationContainer.className = 'contact-animation';
+    animationContainer.className = 'contact-animation-bg';
     contactSection.appendChild(animationContainer);
     
-    // Create moon
-    createMoon(animationContainer);
-    
-    // Create lamps
-    createLamp(animationContainer, '15%', '10%', 1, 0);
-    createLamp(animationContainer, '85%', '15%', 0.9, -2);
-    createLamp(animationContainer, '75%', '85%', 0.8, -4);
-    createLamp(animationContainer, '5%', '80%', 0.7, -6);
-    
-    // Create stars
-    for (let i = 0; i < 40; i++) {
-      createStar(animationContainer);
+    // Create floating geometric shapes
+    for (let i = 0; i < 8; i++) {
+      createFloatingShape(animationContainer);
     }
     
-    // Create sparkles
-    for (let i = 0; i < 30; i++) {
-      createSparkle(animationContainer);
+    // Create particle system
+    for (let i = 0; i < 50; i++) {
+      createParticle(animationContainer);
     }
     
-    // Create initial rocket
-    createRocket(animationContainer);
+    // Create glowing orbs
+    for (let i = 0; i < 6; i++) {
+      createGlowingOrb(animationContainer);
+    }
     
-    // Create a new rocket every 15 seconds
-    const rocketInterval = setInterval(() => {
-      createRocket(animationContainer);
-    }, 15000);
+    // Create energy waves
+    createEnergyWave(animationContainer);
+    
+    // Create floating icons
+    createFloatingIcons(animationContainer);
     
     // Cleanup function
     return () => {
-      clearInterval(rocketInterval);
       if (contactSection.contains(animationContainer)) {
         contactSection.removeChild(animationContainer);
       }
     };
   }, []);
 
-  // Function to create moon
-  const createMoon = (parent) => {
-    const moon = document.createElement('div');
-    moon.className = 'contact-moon';
-    parent.appendChild(moon);
+  // Create floating geometric shapes
+  const createFloatingShape = (parent) => {
+    const shapes = ['triangle', 'square', 'pentagon', 'hexagon'];
+    const shape = document.createElement('div');
+    shape.className = `floating-shape ${shapes[Math.floor(Math.random() * shapes.length)]}`;
+    
+    // Random positioning and animation
+    shape.style.left = `${Math.random() * 100}%`;
+    shape.style.top = `${Math.random() * 100}%`;
+    shape.style.animationDuration = `${Math.random() * 10 + 15}s`;
+    shape.style.animationDelay = `${Math.random() * 5}s`;
+    
+    const size = Math.random() * 40 + 20;
+    shape.style.width = `${size}px`;
+    shape.style.height = `${size}px`;
+    
+    parent.appendChild(shape);
   };
 
-  // Function to create lamp
-  const createLamp = (parent, left, top, scale, delay) => {
-    const lamp = document.createElement('div');
-    lamp.className = 'contact-lamp';
-    lamp.style.left = left;
-    lamp.style.top = top;
-    lamp.style.transform = `scale(${scale})`;
-    lamp.style.animationDelay = `${delay}s`;
+  // Create particle system
+  const createParticle = (parent) => {
+    const particle = document.createElement('div');
+    particle.className = 'particle';
     
-    // Create lamp chain
-    const chain = document.createElement('div');
-    chain.className = 'lamp-chain';
-    lamp.appendChild(chain);
+    particle.style.left = `${Math.random() * 100}%`;
+    particle.style.top = `${Math.random() * 100}%`;
+    particle.style.animationDuration = `${Math.random() * 8 + 6}s`;
+    particle.style.animationDelay = `${Math.random() * 3}s`;
     
-    // Create lamp top
-    const lampTop = document.createElement('div');
-    lampTop.className = 'lamp-top';
-    lamp.appendChild(lampTop);
+    const size = Math.random() * 3 + 1;
+    particle.style.width = `${size}px`;
+    particle.style.height = `${size}px`;
     
-    // Create lamp body
-    const lampBody = document.createElement('div');
-    lampBody.className = 'lamp-body';
-    lamp.appendChild(lampBody);
-    
-    // Create lamp light
-    const lampLight = document.createElement('div');
-    lampLight.className = 'lamp-light';
-    lampBody.appendChild(lampLight);
-    
-    parent.appendChild(lamp);
+    parent.appendChild(particle);
   };
 
-  // Function to create star
-  const createStar = (parent) => {
-    const star = document.createElement('div');
-    star.className = 'contact-star';
+  // Create glowing orbs
+  const createGlowingOrb = (parent) => {
+    const orb = document.createElement('div');
+    orb.className = 'glowing-orb';
     
-    // Randomize properties
-    const size = Math.random() * 3 + 1; // 1-4px
-    star.style.width = `${size}px`;
-    star.style.height = `${size}px`;
-    star.style.left = `${Math.random() * 100}%`;
-    star.style.top = `${Math.random() * 100}%`;
-    star.style.animationDuration = `${Math.random() * 4 + 3}s`;
-    star.style.animationDelay = `${Math.random() * 5}s`;
+    orb.style.left = `${Math.random() * 100}%`;
+    orb.style.top = `${Math.random() * 100}%`;
+    orb.style.animationDuration = `${Math.random() * 6 + 8}s`;
+    orb.style.animationDelay = `${Math.random() * 4}s`;
     
-    parent.appendChild(star);
+    const size = Math.random() * 60 + 30;
+    orb.style.width = `${size}px`;
+    orb.style.height = `${size}px`;
+    
+    parent.appendChild(orb);
   };
 
-  // Function to create sparkle
-  const createSparkle = (parent) => {
-    const sparkle = document.createElement('div');
-    sparkle.className = 'contact-sparkle';
-    
-    // Randomize properties
-    const size = Math.random() * 4 + 2; // 2-6px
-    sparkle.style.width = `${size}px`;
-    sparkle.style.height = `${size}px`;
-    sparkle.style.left = `${Math.random() * 100}%`;
-    sparkle.style.top = `${Math.random() * 100}%`;
-    sparkle.style.animationDuration = `${Math.random() * 3 + 2}s`;
-    sparkle.style.animationDelay = `${Math.random() * 5}s`;
-    
-    parent.appendChild(sparkle);
+  // Create energy wave
+  const createEnergyWave = (parent) => {
+    const wave = document.createElement('div');
+    wave.className = 'energy-wave';
+    parent.appendChild(wave);
   };
 
-  // Function to create rocket
-  const createRocket = (parent) => {
-    const rocket = document.createElement('div');
-    rocket.className = 'contact-rocket';
+  // Create floating icons
+  const createFloatingIcons = (parent) => {
+    const icons = ['💼', '🚀', '💡', '⚡', '🎯', '✨'];
     
-    // Random vertical position
-    rocket.style.top = `${Math.random() * 50 + 20}%`;
-    
-    // Create rocket body
-    const rocketBody = document.createElement('div');
-    rocketBody.className = 'rocket-body';
-    
-    // Create window
-    const rocketWindow = document.createElement('div');
-    rocketWindow.className = 'rocket-window';
-    rocketBody.appendChild(rocketWindow);
-    
-    // Create fins
-    const leftFin = document.createElement('div');
-    leftFin.className = 'rocket-fin left';
-    rocketBody.appendChild(leftFin);
-    
-    const rightFin = document.createElement('div');
-    rightFin.className = 'rocket-fin right';
-    rocketBody.appendChild(rightFin);
-    
-    // Create flame
-    const flame = document.createElement('div');
-    flame.className = 'rocket-flame';
-    rocketBody.appendChild(flame);
-    
-    rocket.appendChild(rocketBody);
-    parent.appendChild(rocket);
-    
-    // Remove rocket after animation completes
-    setTimeout(() => {
-      if (parent.contains(rocket)) {
-        parent.removeChild(rocket);
-      }
-    }, 15000);
+    icons.forEach((icon, index) => {
+      const iconElement = document.createElement('div');
+      iconElement.className = 'floating-icon';
+      iconElement.textContent = icon;
+      
+      iconElement.style.left = `${(index * 15) + Math.random() * 10}%`;
+      iconElement.style.top = `${Math.random() * 80 + 10}%`;
+      iconElement.style.animationDelay = `${index * 0.5}s`;
+      
+      parent.appendChild(iconElement);
+    });
   };
 
   const handleChange = (e) => {
@@ -186,18 +140,25 @@ const Contact = () => {
     
     // Form validation
     if (!formData.name || !formData.email || !formData.message) {
-      toast.error('Please fill in all required fields');
+      toast.error('Please fill in all required fields', {
+        position: "top-right",
+        autoClose: 4000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        theme: "dark",
+      });
       return;
     }
     
     setLoading(true);
     
-    // Replace these with your actual EmailJS service ID, template ID, and public key
+    // Replace with your EmailJS credentials
     const serviceId = 'service_k85n6kh'; 
     const templateId = 'template_wget62i'; 
     const publicKey = 'Yzdg3Mr9jbkLavMsX';
     
-    // Create template parameters - these names must match your EmailJS template variables
     const templateParams = {
       from_name: formData.name,
       reply_to: formData.email,
@@ -205,12 +166,17 @@ const Contact = () => {
       message: formData.message
     };
     
-    // Use sendForm when you want to send the actual form
-    // Use send when you want to send custom parameters
     emailjs.send(serviceId, templateId, templateParams, publicKey)
       .then((result) => {
-        toast.success('Your message has been sent! We\'ll get back to you soon.');
-        console.log('EmailJS success:', result.text);
+        toast.success('🎉 Message sent successfully! We\'ll be in touch soon.', {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          theme: "dark",
+        });
         
         // Reset form
         setFormData({
@@ -220,112 +186,190 @@ const Contact = () => {
           message: ''
         });
         
-        // Create celebration effect
-        const contactContainer = document.querySelector('.contact-container');
-        if (contactContainer) {
-          contactContainer.style.animation = 'success-pulse 1.5s';
+        // Success animation
+        const container = document.querySelector('.contact-container');
+        if (container) {
+          container.classList.add('success-animation');
           setTimeout(() => {
-            contactContainer.style.animation = '';
-          }, 1500);
+            container.classList.remove('success-animation');
+          }, 2000);
           
-          // Create extra sparkles for celebration
-          const animationContainer = document.querySelector('.contact-animation');
-          if (animationContainer) {
-            for (let i = 0; i < 20; i++) {
-              createSparkle(animationContainer);
+          // Create celebration particles
+          const animationBg = document.querySelector('.contact-animation-bg');
+          if (animationBg) {
+            for (let i = 0; i < 30; i++) {
+              createCelebrationParticle(animationBg);
             }
           }
         }
       })
       .catch((error) => {
-        toast.error('Failed to send message. Please try again later.');
-        console.error('EmailJS error:', error.text);
+        toast.error('Failed to send message. Please try again!', {
+          position: "top-right",
+          autoClose: 4000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          theme: "dark",
+        });
+        console.error('EmailJS error:', error);
       })
       .finally(() => {
         setLoading(false);
       });
   };
 
+  const createCelebrationParticle = (parent) => {
+    const particle = document.createElement('div');
+    particle.className = 'celebration-particle';
+    
+    particle.style.left = `${Math.random() * 100}%`;
+    particle.style.top = `${Math.random() * 100}%`;
+    
+    const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#f9ca24', '#f0932b', '#eb4d4b'];
+    particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+    
+    parent.appendChild(particle);
+    
+    setTimeout(() => {
+      if (parent.contains(particle)) {
+        parent.removeChild(particle);
+      }
+    }, 3000);
+  };
+
   return (
     <div className="contact-section" ref={contactSectionRef}>
-      <ToastContainer position="top-right" autoClose={5000} hideProgressBar={false} />
+      <ToastContainer 
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
       
       <div className="contact-container">
-        <h2 className="section-title">Get In Touch</h2>
-        <p className="section-subtitle">
-          Have a question or want to work together? Fill out the form below and I'll get back to you as soon as possible.
-        </p>
+        <div className="header-section">
+          <h2 className="section-title">
+            <span className="title-gradient">Let's Create</span>
+            <span className="title-accent">Something Amazing</span>
+          </h2>
+          <p className="section-subtitle">
+            Ready to bring your vision to life? Drop us a message and let's start building the future together.
+          </p>
+        </div>
         
         <form ref={form} className="contact-form" onSubmit={handleSubmit}>
-          <div className="form-row">
-            <div className="form-group floating-label">
-              <input
-                type="text"
-                id="name"
-                name="name"
-                className="form-control"
-                placeholder=" "
-                value={formData.name}
-                onChange={handleChange}
-              />
-              <label htmlFor="name">Your Name</label>
-              <span className="focus-border"></span>
-              <i className="input-icon far fa-user"></i>
+          <div className="form-grid">
+            <div className="form-group">
+              <div className="input-wrapper">
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  className="form-input"
+                  placeholder=" "
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
+                />
+                <label htmlFor="name" className="form-label">Full Name</label>
+                <div className="input-decoration">
+                  <span className="input-icon">👤</span>
+                </div>
+              </div>
             </div>
             
-            <div className="form-group floating-label">
-              <input
-                type="email"
-                id="email"
-                name="email"
-                className="form-control"
-                placeholder=" "
-                value={formData.email}
-                onChange={handleChange}
-              />
-              <label htmlFor="email">Email Address</label>
-              <span className="focus-border"></span>
-              <i className="input-icon far fa-envelope"></i>
+            <div className="form-group">
+              <div className="input-wrapper">
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  className="form-input"
+                  placeholder=" "
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                />
+                <label htmlFor="email" className="form-label">Email Address</label>
+                <div className="input-decoration">
+                  <span className="input-icon">📧</span>
+                </div>
+              </div>
             </div>
           </div>
           
-          <div className="form-group floating-label">
-            <input
-              type="text"
-              id="subject"
-              name="subject"
-              className="form-control"
-              placeholder=" "
-              value={formData.subject}
-              onChange={handleChange}
-            />
-            <label htmlFor="subject">Subject</label>
-            <span className="focus-border"></span>
-            <i className="input-icon far fa-sticky-note"></i>
+          <div className="form-group">
+            <div className="input-wrapper">
+              <input
+                type="text"
+                id="subject"
+                name="subject"
+                className="form-input"
+                placeholder=" "
+                value={formData.subject}
+                onChange={handleChange}
+              />
+              <label htmlFor="subject" className="form-label">Subject</label>
+              <div className="input-decoration">
+                <span className="input-icon">💡</span>
+              </div>
+            </div>
           </div>
           
-          <div className="form-group floating-label">
-            <textarea
-              id="message"
-              name="message"
-              className="form-control"
-              placeholder=" "
-              rows="5"
-              value={formData.message}
-              onChange={handleChange}
-            ></textarea>
-            <label htmlFor="message">Your Message</label>
-            <span className="focus-border"></span>
-            <i className="input-icon far fa-comment-dots"></i>
+          <div className="form-group">
+            <div className="input-wrapper">
+              <textarea
+                id="message"
+                name="message"
+                className="form-input form-textarea"
+                placeholder=" "
+                rows="5"
+                value={formData.message}
+                onChange={handleChange}
+                required
+              ></textarea>
+              <label htmlFor="message" className="form-label">Your Message</label>
+              <div className="input-decoration">
+                <span className="input-icon">💬</span>
+              </div>
+            </div>
           </div>
           
-          <button type="submit" className="send-button" disabled={loading}>
-            <span>
-              {loading ? 'Sending...' : 'Send Message'}
-              <i className={`fas ${loading ? 'fa-spinner fa-spin' : 'fa-paper-plane'}`}></i>
+          <button type="submit" className="submit-btn" disabled={loading}>
+            <span className="btn-content">
+              <span className="btn-text">
+                {loading ? 'Sending...' : 'Send Message'}
+              </span>
+              <span className="btn-icon">
+                {loading ? '⏳' : '🚀'}
+              </span>
             </span>
+            <div className="btn-ripple"></div>
           </button>
         </form>
+        
+        <div className="contact-info">
+          <div className="info-item">
+            <span className="info-icon">⚡</span>
+            <span className="info-text">Lightning fast response</span>
+          </div>
+          <div className="info-item">
+            <span className="info-icon">🎯</span>
+            <span className="info-text">Tailored solutions</span>
+          </div>
+          <div className="info-item">
+            <span className="info-icon">🤝</span>
+            <span className="info-text">Partnership focused</span>
+          </div>
+        </div>
       </div>
     </div>
   );
