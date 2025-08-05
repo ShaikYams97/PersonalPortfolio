@@ -130,7 +130,7 @@ const Home = () => {
       >
         <div className="hero-text">
           <motion.h1 variants={itemVariants}>
-            Hi, I'm <span className="highlight">Shaik Yams</span>
+            Hi, I'm <span className="highlight">SK Yams </span>
           </motion.h1>
           
           <motion.div className="typewriter" variants={itemVariants}>
