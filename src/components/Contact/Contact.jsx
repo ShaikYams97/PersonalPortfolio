@@ -5,7 +5,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import './Contact.css';
 
 const Contact = () => {
-  const form = useRef();
   const contactSectionRef = useRef();
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
@@ -19,33 +18,25 @@ const Contact = () => {
     const contactSection = contactSectionRef.current;
     if (!contactSection) return;
     
-    // Create animation container
     const animationContainer = document.createElement('div');
-    animationContainer.className = 'contact-animation-bg';
+    animationContainer.className = 'contact-animation-bg-white';
     contactSection.appendChild(animationContainer);
     
-    // Create floating geometric shapes
-    for (let i = 0; i < 8; i++) {
-      createFloatingShape(animationContainer);
+    for (let i = 0; i < 10; i++) {
+      createFloatingCircle(animationContainer);
     }
     
-    // Create particle system
-    for (let i = 0; i < 50; i++) {
-      createParticle(animationContainer);
+    for (let i = 0; i < 40; i++) {
+      createSparkle(animationContainer);
     }
     
-    // Create glowing orbs
-    for (let i = 0; i < 6; i++) {
-      createGlowingOrb(animationContainer);
+    for (let i = 0; i < 5; i++) {
+      createGradientBlob(animationContainer);
     }
     
-    // Create energy waves
-    createEnergyWave(animationContainer);
+    createWaveEffect(animationContainer);
+    createFloatingEmojis(animationContainer);
     
-    // Create floating icons
-    createFloatingIcons(animationContainer);
-    
-    // Cleanup function
     return () => {
       if (contactSection.contains(animationContainer)) {
         contactSection.removeChild(animationContainer);
@@ -53,80 +44,73 @@ const Contact = () => {
     };
   }, []);
 
-  // Create floating geometric shapes
-  const createFloatingShape = (parent) => {
-    const shapes = ['triangle', 'square', 'pentagon', 'hexagon'];
-    const shape = document.createElement('div');
-    shape.className = `floating-shape ${shapes[Math.floor(Math.random() * shapes.length)]}`;
+  const createFloatingCircle = (parent) => {
+    const circle = document.createElement('div');
+    circle.className = 'floating-circle';
     
-    // Random positioning and animation
-    shape.style.left = `${Math.random() * 100}%`;
-    shape.style.top = `${Math.random() * 100}%`;
-    shape.style.animationDuration = `${Math.random() * 10 + 15}s`;
-    shape.style.animationDelay = `${Math.random() * 5}s`;
+    circle.style.left = `${Math.random() * 100}%`;
+    circle.style.top = `${Math.random() * 100}%`;
+    circle.style.animationDuration = `${Math.random() * 8 + 10}s`;
+    circle.style.animationDelay = `${Math.random() * 3}s`;
     
-    const size = Math.random() * 40 + 20;
-    shape.style.width = `${size}px`;
-    shape.style.height = `${size}px`;
+    const size = Math.random() * 60 + 40;
+    circle.style.width = `${size}px`;
+    circle.style.height = `${size}px`;
     
-    parent.appendChild(shape);
+    parent.appendChild(circle);
   };
 
-  // Create particle system
-  const createParticle = (parent) => {
-    const particle = document.createElement('div');
-    particle.className = 'particle';
+  const createSparkle = (parent) => {
+    const sparkle = document.createElement('div');
+    sparkle.className = 'sparkle';
     
-    particle.style.left = `${Math.random() * 100}%`;
-    particle.style.top = `${Math.random() * 100}%`;
-    particle.style.animationDuration = `${Math.random() * 8 + 6}s`;
-    particle.style.animationDelay = `${Math.random() * 3}s`;
+    sparkle.style.left = `${Math.random() * 100}%`;
+    sparkle.style.top = `${Math.random() * 100}%`;
+    sparkle.style.animationDuration = `${Math.random() * 3 + 2}s`;
+    sparkle.style.animationDelay = `${Math.random() * 2}s`;
     
-    const size = Math.random() * 3 + 1;
-    particle.style.width = `${size}px`;
-    particle.style.height = `${size}px`;
+    const size = Math.random() * 4 + 2;
+    sparkle.style.width = `${size}px`;
+    sparkle.style.height = `${size}px`;
     
-    parent.appendChild(particle);
+    parent.appendChild(sparkle);
   };
 
-  // Create glowing orbs
-  const createGlowingOrb = (parent) => {
-    const orb = document.createElement('div');
-    orb.className = 'glowing-orb';
+  const createGradientBlob = (parent) => {
+    const blob = document.createElement('div');
+    blob.className = 'gradient-blob';
     
-    orb.style.left = `${Math.random() * 100}%`;
-    orb.style.top = `${Math.random() * 100}%`;
-    orb.style.animationDuration = `${Math.random() * 6 + 8}s`;
-    orb.style.animationDelay = `${Math.random() * 4}s`;
+    blob.style.left = `${Math.random() * 100}%`;
+    blob.style.top = `${Math.random() * 100}%`;
+    blob.style.animationDuration = `${Math.random() * 10 + 15}s`;
+    blob.style.animationDelay = `${Math.random() * 5}s`;
     
-    const size = Math.random() * 60 + 30;
-    orb.style.width = `${size}px`;
-    orb.style.height = `${size}px`;
+    const size = Math.random() * 200 + 150;
+    blob.style.width = `${size}px`;
+    blob.style.height = `${size}px`;
     
-    parent.appendChild(orb);
+    parent.appendChild(blob);
   };
 
-  // Create energy wave
-  const createEnergyWave = (parent) => {
+  const createWaveEffect = (parent) => {
     const wave = document.createElement('div');
-    wave.className = 'energy-wave';
+    wave.className = 'wave-effect';
     parent.appendChild(wave);
   };
 
-  // Create floating icons
-  const createFloatingIcons = (parent) => {
-    const icons = ['💼', '🚀', '💡', '⚡', '🎯', '✨'];
+  const createFloatingEmojis = (parent) => {
+    const emojis = ['✨', '💫', '🌟', '⭐', '💝', '🎨'];
     
-    icons.forEach((icon, index) => {
-      const iconElement = document.createElement('div');
-      iconElement.className = 'floating-icon';
-      iconElement.textContent = icon;
+    emojis.forEach((emoji, index) => {
+      const emojiElement = document.createElement('div');
+      emojiElement.className = 'floating-emoji';
+      emojiElement.textContent = emoji;
       
-      iconElement.style.left = `${(index * 15) + Math.random() * 10}%`;
-      iconElement.style.top = `${Math.random() * 80 + 10}%`;
-      iconElement.style.animationDelay = `${index * 0.5}s`;
+      emojiElement.style.left = `${(index * 16) + Math.random() * 10}%`;
+      emojiElement.style.top = `${Math.random() * 80 + 10}%`;
+      emojiElement.style.animationDelay = `${index * 0.6}s`;
       
-      parent.appendChild(iconElement);
+      parent.appendChild(emojiElement);
     });
   };
 
@@ -138,7 +122,6 @@ const Contact = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     
-    // Form validation
     if (!formData.name || !formData.email || !formData.message) {
       toast.error('Please fill in all required fields', {
         position: "top-right",
@@ -147,14 +130,13 @@ const Contact = () => {
         closeOnClick: true,
         pauseOnHover: true,
         draggable: true,
-        theme: "dark",
+        theme: "light",
       });
       return;
     }
     
     setLoading(true);
     
-    // Replace with your EmailJS credentials
     const serviceId = 'service_k85n6kh'; 
     const templateId = 'template_wget62i'; 
     const publicKey = 'Yzdg3Mr9jbkLavMsX';
@@ -175,10 +157,9 @@ const Contact = () => {
           closeOnClick: true,
           pauseOnHover: true,
           draggable: true,
-          theme: "dark",
+          theme: "light",
         });
         
-        // Reset form
         setFormData({
           name: '',
           email: '',
@@ -186,19 +167,17 @@ const Contact = () => {
           message: ''
         });
         
-        // Success animation
-        const container = document.querySelector('.contact-container');
+        const container = document.querySelector('.contact-container-white');
         if (container) {
-          container.classList.add('success-animation');
+          container.classList.add('success-animation-white');
           setTimeout(() => {
-            container.classList.remove('success-animation');
+            container.classList.remove('success-animation-white');
           }, 2000);
           
-          // Create celebration particles
-          const animationBg = document.querySelector('.contact-animation-bg');
+          const animationBg = document.querySelector('.contact-animation-bg-white');
           if (animationBg) {
-            for (let i = 0; i < 30; i++) {
-              createCelebrationParticle(animationBg);
+            for (let i = 0; i < 40; i++) {
+              createConfetti(animationBg);
             }
           }
         }
@@ -211,7 +190,7 @@ const Contact = () => {
           closeOnClick: true,
           pauseOnHover: true,
           draggable: true,
-          theme: "dark",
+          theme: "light",
         });
         console.error('EmailJS error:', error);
       })
@@ -220,27 +199,27 @@ const Contact = () => {
       });
   };
 
-  const createCelebrationParticle = (parent) => {
-    const particle = document.createElement('div');
-    particle.className = 'celebration-particle';
+  const createConfetti = (parent) => {
+    const confetti = document.createElement('div');
+    confetti.className = 'confetti-particle';
     
-    particle.style.left = `${Math.random() * 100}%`;
-    particle.style.top = `${Math.random() * 100}%`;
+    confetti.style.left = `${Math.random() * 100}%`;
+    confetti.style.top = `${Math.random() * 100}%`;
     
-    const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#f9ca24', '#f0932b', '#eb4d4b'];
-    particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+    const colors = ['#667eea', '#764ba2', '#f093fb', '#4facfe', '#f5576c', '#00f2fe'];
+    confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
     
-    parent.appendChild(particle);
+    parent.appendChild(confetti);
     
     setTimeout(() => {
-      if (parent.contains(particle)) {
-        parent.removeChild(particle);
+      if (parent.contains(confetti)) {
+        parent.removeChild(confetti);
       }
     }, 3000);
   };
 
   return (
-    <div className="contact-section" ref={contactSectionRef}>
+    <div className="contact-section-white" ref={contactSectionRef}>
       <ToastContainer 
         position="top-right"
         autoClose={5000}
@@ -251,123 +230,124 @@ const Contact = () => {
         pauseOnFocusLoss
         draggable
         pauseOnHover
-        theme="dark"
+        theme="light"
       />
       
-      <div className="contact-container">
-        <div className="header-section">
-          <h2 className="section-title">
-            <span className="title-gradient">Let's Create</span>
-            <span className="title-accent">Something Amazing</span>
+      <div className="contact-container-white">
+        <div className="header-section-white">
+          <div className="decorative-element top-left"></div>
+          <div className="decorative-element top-right"></div>
+          
+          <h2 className="section-title-white">
+            <span className="title-main">Let's Connect</span>
+            <span className="title-sub">& Create Magic Together</span>
           </h2>
-          <p className="section-subtitle">
-            Ready to bring your vision to life? Drop us a message and let's start building the future together.
+          <p className="section-subtitle-white">
+            Have a project in mind? I'd love to hear about it. Send me a message and let's make something incredible.
           </p>
         </div>
         
-        <form ref={form} className="contact-form" onSubmit={handleSubmit}>
-          <div className="form-grid">
-            <div className="form-group">
-              <div className="input-wrapper">
+        <div className="contact-form-white">
+          <div className="form-row">
+            <div className="form-group-white">
+              <div className="input-container">
+                <span className="input-icon-white">👤</span>
                 <input
                   type="text"
                   id="name"
                   name="name"
-                  className="form-input"
+                  className="form-input-white"
                   placeholder=" "
                   value={formData.name}
                   onChange={handleChange}
                   required
                 />
-                <label htmlFor="name" className="form-label">Full Name</label>
-                <div className="input-decoration">
-                  <span className="input-icon">👤</span>
-                </div>
+                <label htmlFor="name" className="form-label-white">Full Name</label>
+                <div className="input-border"></div>
               </div>
             </div>
             
-            <div className="form-group">
-              <div className="input-wrapper">
+            <div className="form-group-white">
+              <div className="input-container">
+                <span className="input-icon-white">✉️</span>
                 <input
                   type="email"
                   id="email"
                   name="email"
-                  className="form-input"
+                  className="form-input-white"
                   placeholder=" "
                   value={formData.email}
                   onChange={handleChange}
                   required
                 />
-                <label htmlFor="email" className="form-label">Email Address</label>
-                <div className="input-decoration">
-                  <span className="input-icon">📧</span>
-                </div>
+                <label htmlFor="email" className="form-label-white">Email Address</label>
+                <div className="input-border"></div>
               </div>
             </div>
           </div>
           
-          <div className="form-group">
-            <div className="input-wrapper">
+          <div className="form-group-white">
+            <div className="input-container">
+              <span className="input-icon-white">💡</span>
               <input
                 type="text"
                 id="subject"
                 name="subject"
-                className="form-input"
+                className="form-input-white"
                 placeholder=" "
                 value={formData.subject}
                 onChange={handleChange}
               />
-              <label htmlFor="subject" className="form-label">Subject</label>
-              <div className="input-decoration">
-                <span className="input-icon">💡</span>
-              </div>
+              <label htmlFor="subject" className="form-label-white">Subject (Optional)</label>
+              <div className="input-border"></div>
             </div>
           </div>
           
-          <div className="form-group">
-            <div className="input-wrapper">
+          <div className="form-group-white">
+            <div className="input-container">
+              <span className="input-icon-white textarea-icon">💬</span>
               <textarea
                 id="message"
                 name="message"
-                className="form-input form-textarea"
+                className="form-input-white form-textarea-white"
                 placeholder=" "
                 rows="5"
                 value={formData.message}
                 onChange={handleChange}
                 required
               ></textarea>
-              <label htmlFor="message" className="form-label">Your Message</label>
-              <div className="input-decoration">
-                <span className="input-icon">💬</span>
-              </div>
+              <label htmlFor="message" className="form-label-white textarea-label">Your Message</label>
+              <div className="input-border"></div>
             </div>
           </div>
           
-          <button type="submit" className="submit-btn" disabled={loading}>
-            <span className="btn-content">
-              <span className="btn-text">
+          <button type="button" onClick={handleSubmit} className="submit-btn-white" disabled={loading}>
+            <span className="btn-content-white">
+              <span className="btn-text-white">
                 {loading ? 'Sending...' : 'Send Message'}
               </span>
-              <span className="btn-icon">
+              <span className="btn-icon-white">
                 {loading ? '⏳' : '🚀'}
               </span>
             </span>
-            <div className="btn-ripple"></div>
+            <div className="btn-glow"></div>
           </button>
-        </form>
+        </div>
         
-        <div className="contact-info">
-          <div className="info-item">
-            <span className="info-icon">⚡</span>
-            <span className="info-text">Lightning fast response</span>
+        <div className="contact-footer">
+          <div className="footer-item">
+            <span className="footer-icon">⚡</span>
+            <span className="footer-text">Quick Response</span>
           </div>
-          <div className="info-item">
-            <span className="info-icon">🎯</span>
-            <span className="info-text">Tailored solutions</span>
+          <div className="footer-divider"></div>
+          <div className="footer-item">
+            <span className="footer-icon">🎯</span>
+            <span className="footer-text">Goal Oriented</span>
           </div>
-          <div className="info-item">
-            <span className="info-icon">🤝</span>
-            <span className="info-text">Partnership focused</span>
+          <div className="footer-divider"></div>
+          <div className="footer-item">
+            <span className="footer-icon">💼</span>
+            <span className="footer-text">Professional</span>
           </div>
         </div>
       </div>
